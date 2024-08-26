@@ -4,7 +4,7 @@ import Model from '../components/models/Model';
 import CardComponent from '../components/CardComponent';
 
 const Book = () => {
-    const { books, setBooks, setModel, showModel } = useContext(LibraryContext);
+    const { books, setBooks, authors, setAuthors, setModel, showModel } = useContext(LibraryContext);
     console.log(showModel, "model")
     return (
         <div className="m-3">
@@ -19,7 +19,11 @@ const Book = () => {
             </div>
             <Model />
             <hr />
-            <CardComponent />
+            <div className='row gap-3 m-1'>
+                {books?.map((book, n) => {
+                    return <CardComponent bookName={book.bookName} author={book.author} isbn={book.isbn} publication={book.publicationDate} key={n} />
+                })}
+            </div>
         </div>
 
     )

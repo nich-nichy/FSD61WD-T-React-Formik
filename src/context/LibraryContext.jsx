@@ -9,7 +9,7 @@ const LibraryProvider = ({ children }) => {
     const [authors, setAuthors] = useState([]);
     const [showModel, setModel] = useState(false);
     const [newOneAdded, isNewOneAdded] = useState(false);
-    const [currentMode, setCurrentMode] = useState('author');
+    const [currentMode, setCurrentMode] = useState('book');
     const [dataToEdit, setDataToEdit] = useState(null);
     const [toDelete, setToDelete] = useState(false);
     const [dataToDelete, setDataToDelete] = useState(false);

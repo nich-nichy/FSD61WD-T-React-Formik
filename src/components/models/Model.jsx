@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import { LibraryContext } from '../../context/LibraryContext';
 
 const Model = () => {
-    const { books, setBooks, showModel, setModel, currentMode } = useContext(LibraryContext);
+    const { books, setBooks, authors, setAuthors, showModel, setModel, currentMode } = useContext(LibraryContext);
     const handleClose = () => {
         setModel(false);
     };
@@ -42,8 +42,15 @@ const Model = () => {
                             publishedDate: Yup.date().required('Required'),
                         })}
                         onSubmit={async (values) => {
-                            // console.log(values);
-
+                            console.log(values);
+                            setBooks((oldData) => {
+                                const newBook = {
+                                    ...values,
+                                    id: Date.now(),
+                                };
+                                return [...oldData, newBook];
+                            });
+                            setModel(false)
                         }}
                     >
                         {({ handleSubmit }) => (
@@ -103,7 +110,8 @@ const Model = () => {
                                 shortBio: Yup.string().required('Required'),
                             })}
                             onSubmit={async (values) => {
-                                // console.log(values);
+                                console.log(values);
+
                             }}
                         >
                             {({ handleSubmit }) => (
