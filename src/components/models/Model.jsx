@@ -26,19 +26,21 @@ const Model = () => {
                 <Modal.Body>
                     <Formik
                         initialValues={{
-                            bookName: '',
-                            author: '',
-                            isbn: '',
-                            publishedDate: '',
+                            bookName: currentMode?.includes('book-edit') ? books?.bookName : '',
+                            author: currentMode?.includes('book-edit') ? books?.author : '',
+                            isbn: currentMode?.includes('book-edit') ? books?.isbn : '',
+                            publishedDate: currentMode?.includes('book-edit') ? books?.publishedDate : '',
                         }}
-
                         validationSchema={Yup.object().shape({
                             bookName: Yup.string()
                                 .min(2, 'Too Short!')
                                 .max(50, 'Too Long!')
                                 .required('Required '),
                             author: Yup.string().min(2, 'Too Short!').required('Required'),
-                            isbn: Yup.number().required('Required'),
+                            isbn: Yup.string()
+                                .length(13, 'ISBN must be exactly 13 digits!')
+                                .matches(/^\d+$/, 'ISBN must contain only numbers')
+                                .required('Required'),
                             publishedDate: Yup.date().required('Required'),
                         })}
                         onSubmit={async (values) => {
@@ -96,9 +98,9 @@ const Model = () => {
                     <Modal.Body>
                         <Formik
                             initialValues={{
-                                authorName: '',
-                                birthDate: '',
-                                shortBio: '',
+                                authorName: currentMode?.includes('author-edit') ? authors?.authorName : '',
+                                birthDate: currentMode?.includes('author-edit') ? authors?.birthDate : '',
+                                shortBio: currentMode?.includes('author-edit') ? authors?.shortBio : '',
                             }}
 
                             validationSchema={Yup.object().shape({
@@ -107,11 +109,18 @@ const Model = () => {
                                     .max(50, 'Too Long!')
                                     .required('Required '),
                                 birthDate: Yup.date().required('Required'),
-                                shortBio: Yup.string().required('Required'),
+                                shortBio: Yup.string().min(10, 'Biography should be some long!').required('Required'),
                             })}
                             onSubmit={async (values) => {
                                 console.log(values);
-
+                                setAuthors((oldData) => {
+                                    const newAuthor = {
+                                        ...values,
+                                        id: Date.now(),
+                                    };
+                                    return [...oldData, newAuthor];
+                                });
+                                setModel(false)
                             }}
                         >
                             {({ handleSubmit }) => (
@@ -141,7 +150,6 @@ const Model = () => {
                         </Formik>
                     </Modal.Body>
                 </Modal>}
-
         </div>
     );
 };
