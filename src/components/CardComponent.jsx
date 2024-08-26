@@ -11,8 +11,6 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
         setAuthors,
         currentMode,
         setCurrentMode,
-        setEditingItem,
-        showModel,
         setModel,
         setCurrentAuthorsToEdit,
         setCurrentBookToEdit,
@@ -20,7 +18,6 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
 
     const bookColorArr = ['#4169e1', '#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251', '#B565A7', '#009B77', '#DD4124', '#45B8AC', '#4169e1'];
     const bookColor = bookColorArr[Math.floor(Math.random() * bookColorArr.length)];
-    console.log(authors)
     const handleBookEdit = () => {
         setModel(true);
         setCurrentMode('book-edit');

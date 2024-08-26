@@ -4,8 +4,7 @@ import Model from '../components/models/Model';
 import CardComponent from '../components/CardComponent';
 
 const Author = () => {
-    const { authors, setAuthors, setModel, showModel, setCurrentMode } = useContext(LibraryContext);
-    console.log(showModel, "model")
+    const { authors, setModel, setCurrentMode } = useContext(LibraryContext);
     return (
         <div className="m-3">
             <h3>Author</h3>
@@ -13,7 +12,6 @@ const Author = () => {
             <div className="d-flex">
                 <h3 className='me-3'>To add a book click here: </h3>
                 <button className="btn btn-primary" onClick={() => {
-                    console.log('clicked')
                     setModel(true)
                     setCurrentMode('author')
                 }}>Add</button>

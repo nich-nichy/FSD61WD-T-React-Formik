@@ -4,8 +4,7 @@ import Model from '../components/models/Model';
 import CardComponent from '../components/CardComponent';
 
 const Book = () => {
-    const { books, setBooks, authors, setAuthors, setModel, showModel } = useContext(LibraryContext);
-    console.log(showModel, books, "model")
+    const { books, setModel } = useContext(LibraryContext);
     return (
         <div className="m-3">
             <h3>Books</h3>

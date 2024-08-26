@@ -26,10 +26,8 @@ const Model = () => {
 
     const handleSubmitBook = (values) => {
         if (currentMode === 'book-edit') {
-            // Edit existing book
             setBooks(books.map(book => (book.id === currentBookToEdit.id ? { ...book, ...values } : book)));
         } else {
-            // Add new book
             setBooks([...books, { ...values, id: Date.now() }]);
         }
         setCurrentMode('book');
@@ -38,16 +36,13 @@ const Model = () => {
 
     const handleSubmitAuthor = (values) => {
         if (currentMode === 'author-edit') {
-            // Edit existing author
             setAuthors(authors.map(author => (author.id === currentAuthorsToEdit.id ? { ...author, ...values } : author)));
         } else {
-            // Add new author
             setAuthors([...authors, { ...values, id: Date.now() }]);
         }
         setCurrentMode('author');
         setModel(false);
     };
-    console.log(currentMode, "currentMode")
     return (
         <div>
             {currentMode?.includes('book') ? (
@@ -56,7 +51,7 @@ const Model = () => {
                     onHide={handleClose}
                     backdrop="static"
                     keyboard={false}
-                    className="bg-dark"
+                    className="bg-dark poppins-regular"
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>{currentMode?.includes('book-edit') ? 'Edit Book' : 'Add Book'}</Modal.Title>
