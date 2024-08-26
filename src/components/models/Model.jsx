@@ -14,12 +14,14 @@ const Model = () => {
         showModel,
         setModel,
         currentMode,
+        setCurrentMode,
         currentAuthorsToEdit,
         currentBookToEdit,
     } = useContext(LibraryContext);
 
     const handleClose = () => {
         setModel(false);
+        setCurrentMode('add');
     };
 
     const handleSubmitBook = (values) => {
@@ -30,6 +32,7 @@ const Model = () => {
             // Add new book
             setBooks([...books, { ...values, id: Date.now() }]);
         }
+        setCurrentMode('book');
         setModel(false);
     };
 
@@ -41,9 +44,10 @@ const Model = () => {
             // Add new author
             setAuthors([...authors, { ...values, id: Date.now() }]);
         }
+        setCurrentMode('author');
         setModel(false);
     };
-
+    console.log(currentMode, "currentMode")
     return (
         <div>
             {currentMode?.includes('book') ? (

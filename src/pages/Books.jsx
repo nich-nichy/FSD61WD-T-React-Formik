@@ -14,13 +14,14 @@ const Book = () => {
                 <h3 className='me-3'>To add a book click here: </h3>
                 <button className="btn btn-primary" onClick={() => {
                     setModel(true)
+                    setCurrentMode('book')
                 }}>Add</button>
             </div>
             <Model />
             <hr />
             <div className='row gap-3 m-1'>
                 {books?.map((book, n) => {
-                    return <CardComponent bookId={book.id} bookName={book.bookName} author={book.author} isbn={book.isbn} publication={book.publishedDate} key={n} />
+                    return <CardComponent bookId={book.id} bookName={book.bookName} author={book.author} isbn={book.isbn} publication={book.publication} key={n} />
                 })}
             </div>
         </div>

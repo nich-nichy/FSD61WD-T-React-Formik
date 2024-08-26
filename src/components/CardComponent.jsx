@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Model from '../components/models/Model'
 import { LibraryContext } from '../context/LibraryContext';
 
-const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName, dob, bio, id }) => {
+const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName, dob, bio, authorId }) => {
     const {
         books,
         setBooks,
@@ -20,7 +20,7 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
 
     const bookColorArr = ['#4169e1', '#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251', '#B565A7', '#009B77', '#DD4124', '#45B8AC', '#4169e1'];
     const bookColor = bookColorArr[Math.floor(Math.random() * bookColorArr.length)];
-
+    console.log(authors)
     const handleBookEdit = () => {
         setModel(true);
         setCurrentMode('book-edit');
@@ -30,7 +30,7 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
     const handleAuthorEdit = () => {
         setModel(true);
         setCurrentMode('author-edit');
-        setCurrentAuthorsToEdit({ id, authorName, dob, bio });
+        setCurrentAuthorsToEdit({ id: authorId, authorName: authorName, dob: dob, bio: bio });
     };
 
     const handleBookDelete = () => {
@@ -38,7 +38,7 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
     };
 
     const handleAuthorDelete = () => {
-        setAuthors(authors.filter(author => author.id !== id));
+        setAuthors(authors.filter(author => author.id !== authorId));
     };
 
     return (
@@ -53,9 +53,9 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
                         <Card.Title className="text-center">{bookName}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted text-center">{author}</Card.Subtitle>
                         <Card.Text className="text-center">
-                            ISBN: {isbn}
+                            {isbn}
                             <br />
-                            Publication Date: {publication}
+                            {publication}
                         </Card.Text>
                         <Card.Footer className="text-center">
                             <div>
@@ -74,9 +74,9 @@ const CardComponent = ({ bookId, bookName, author, isbn, publication, authorName
                     ></div>
                     <Card.Body>
                         <Card.Title className="text-center">{authorName}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted text-center">DOB: {dob}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted text-center">{dob}</Card.Subtitle>
                         <Card.Text className="text-center">
-                            Bio: {bio}
+                            {bio}
                         </Card.Text>
                         <Card.Footer className="text-center">
                             <div>
