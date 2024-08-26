@@ -13,7 +13,7 @@ const Dashboard = () => {
             <div className='m-3'>
                 <Navbar expand="lg bg-light" className="bg-body-tertiary">
                     <Container>
-                        <Navbar.Brand href="#home">Dashboard</Navbar.Brand>
+                        <Navbar.Brand href="#home" className='fw-1 fs-2'>Dashboard</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     </Container>
                 </Navbar>
@@ -23,7 +23,7 @@ const Dashboard = () => {
                         <Card.Body className=''>
                             <div>
                                 <Card.Title className=''>Current Books</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">You can add books, here is our current books</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">You can add books here, is our current books</Card.Subtitle>
                                 <Card.Text className="text-center fs-3">
                                     {currentBooks}
                                 </Card.Text>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                         <Card.Body>
                             <div>
                                 <Card.Title>Current Authors</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">You can add authors, here is our current authors</Card.Subtitle>
+                                <Card.Subtitle className="mb-2 text-muted">You can add authors here, is our current authors</Card.Subtitle>
                                 <Card.Text className="text-center fs-3">
                                     {currentAuthors}
                                 </Card.Text>
