@@ -5,7 +5,7 @@ import CardComponent from '../components/CardComponent';
 
 const Book = () => {
     const { books, setBooks, authors, setAuthors, setModel, showModel } = useContext(LibraryContext);
-    console.log(showModel, "model")
+    console.log(showModel, books, "model")
     return (
         <div className="m-3">
             <h3>Books</h3>
@@ -13,7 +13,6 @@ const Book = () => {
             <div className="d-flex">
                 <h3 className='me-3'>To add a book click here: </h3>
                 <button className="btn btn-primary" onClick={() => {
-                    console.log('clicked')
                     setModel(true)
                 }}>Add</button>
             </div>
@@ -21,11 +20,10 @@ const Book = () => {
             <hr />
             <div className='row gap-3 m-1'>
                 {books?.map((book, n) => {
-                    return <CardComponent bookName={book.bookName} author={book.author} isbn={book.isbn} publication={book.publicationDate} key={n} />
+                    return <CardComponent bookId={book.id} bookName={book.bookName} author={book.author} isbn={book.isbn} publication={book.publishedDate} key={n} />
                 })}
             </div>
         </div>
-
     )
 }
 

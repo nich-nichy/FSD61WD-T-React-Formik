@@ -13,8 +13,10 @@ const LibraryProvider = ({ children }) => {
     const [dataToEdit, setDataToEdit] = useState(null);
     const [toDelete, setToDelete] = useState(false);
     const [dataToDelete, setDataToDelete] = useState(false);
+    const [currentBookToEdit, setCurrentBookToEdit] = useState({});
+    const [currentAuthorsToEdit, setCurrentAuthorsToEdit] = useState({});
     return (
-        <LibraryContext.Provider value={{ books, setBooks, authors, setAuthors, showModel, setModel, newOneAdded, isNewOneAdded, currentMode, setCurrentMode, dataToEdit, setDataToEdit, toDelete, setToDelete, dataToDelete, setDataToDelete }}>
+        <LibraryContext.Provider value={{ books, setBooks, authors, setAuthors, showModel, setModel, newOneAdded, isNewOneAdded, currentMode, setCurrentMode, dataToEdit, setDataToEdit, toDelete, setToDelete, dataToDelete, setDataToDelete, currentBookToEdit, setCurrentBookToEdit, currentAuthorsToEdit, setCurrentAuthorsToEdit }}>
             {children}
         </LibraryContext.Provider>
     );

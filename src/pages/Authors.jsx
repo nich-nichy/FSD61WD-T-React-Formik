@@ -21,7 +21,7 @@ const Author = () => {
             <hr />
             <div className='row gap-3 m-1'>
                 {authors?.map((author, n) => {
-                    return <CardComponent authorName={author.authorName} dob={author.birthDate} bio={author.shortBio} key={n} />
+                    return <CardComponent authorId={author.id} authorName={author.authorName} dob={author.birthDate} bio={author.shortBio} key={n} />
                 })}
             </div>
         </div>
